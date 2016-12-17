@@ -1,0 +1,333 @@
+*{
+	  	padding: 0;
+	  	margin: 0;
+	  	list-style-type: none;
+	  }
+	  body{
+	  	/*position: relative;*/
+	  	background: url('images/bg.jpg');
+  		-webkit-background-size: cover;
+  		background-size: cover;
+	  }
+	  /*顶部样式*/
+	  .top{
+	  	width: 100%;
+	  	height: 80px;
+	  	position: fixed;
+	  	top: 0;
+	  	z-index: 100;
+	  	background-color: #fff ;
+	  	font-family: Microsoft Yahei;
+	  	/*overflow: hidden;*/
+	  }
+	  .top .icon{
+	  	margin-left: 125px;
+	    float: left;
+	  }
+	  .top .icon img{
+	  	width: 175px;
+	  	height: 81px;
+	  }
+	  .top .navbar{
+	  	height: 80px;
+	  	overflow: hidden;
+	  }
+	  .top .navbar ul{
+	  	list-style-type: none;
+	  }
+	  .top .navbar ul li{
+	  	float: left;
+	  	text-align: center;
+	  	width: 132px;
+	  	font-size: 20px;
+	  }
+	  .top .navbar ul li a{
+	  	text-decoration: none;
+	  	display: inline-block;
+	  	height: 25px;
+	  	margin-top: 20px;
+	  	padding: 5px;
+
+	  }
+	  .top .navbar ul li a i{
+	  	width: 10px;
+	  	height: 10px;
+	  	display: inline-block;
+	  	background: url('images/arrow_blue.png') no-repeat;
+	  	-webkit-background-size: contain;
+	  	background-size: contain;
+	  }
+	  .top .navbar ul li a:link,.top .navbar ul li a:visited{
+	  	color: #428bca;
+	  }
+	  .top .navbar ul li a:hover,.top .navbar ul li a:active{
+        color: #fff;
+        background-color: rgb(91,146,205);
+        border-radius: 7px;
+	  }
+	  .top .navbar ul li a:hover i,.top .navbar ul li a:active i{
+	  	background:url('images/arrow_white.png') no-repeat;
+	  	-webkit-background-size: contain;
+	  	background-size: contain;
+	  }
+	  .hiddenlist{
+	  	width: 280px;
+	  	background-color: #fff;
+		margin-top: 1px;
+		display: none;
+	  }
+	  .inlineList{
+	  	list-style-type: none;
+	  }
+	  .inlineList li{
+         font-family: Microsoft Yahei;
+         font-size: 20px;
+         height: 50px;    
+         line-height: 50px;
+         text-align: center;
+        
+	  }
+	  .inlineList li a {
+	  	text-decoration: none;
+	  	display: inline-block;
+	  	width: 95%;
+	    border-bottom: 1px solid #ccc;
+	  }
+	  .inlineList li a:link,.inlineList li a:visited{
+	  	color: #428bca;
+	  }
+	  .inlineList li a:hover,.inlineList li a:active{
+	  	color: black;
+	  }
+	  div.a{
+	  	margin-left: 25%;
+	  }
+	  div.b{
+	  	margin-left: 33%;
+	  }
+	  .top span{
+	  	color: #f8a335;
+	  	display: block;
+	  	line-height: 80px;
+	  	font-size: 16px;
+	  	margin-left: 35px;
+	  }
+	  /*内容样式*/
+	  .container{
+	  	width: 1000px;
+	  	margin: 140px auto 0;
+	  	/*background-color: #b2c3d4;*/
+	  }
+	  .banner{
+	  	width: 998px;
+	  	height: 560px;
+	  	
+	  	margin-bottom: 45px;
+	  	overflow: hidden;
+		position: relative;
+	  }
+		.banner .imgs{
+			width: 9999px;
+			height: 560px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.banner .imgs li{
+			float: left;
+		}
+		.banner .imgs li a img{
+              width: 100%;
+		}
+		.banner .number{
+			position: absolute;
+			width: 100%;
+			bottom: 10px;
+			left: 0;
+			text-align: center;
+			font-size: 0;
+		}
+		.banner .number li{
+			width: 10px;
+			height: 10px;
+			background-color: lightblue;
+			border-radius: 50%;
+			display: inline-block;
+	        margin:0 3px;
+	        cursor: pointer;
+		}
+		.banner .number li .on{
+			background-color: #F60;
+		}
+		.banner .btn{
+			width: 30px;
+			height: 50px;
+			background-color: rgba(140,140,140,1);
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			text-align: center;
+			line-height: 50px;
+			font-size: 40px;
+			cursor: pointer;
+			font-family: "宋体";
+			display: none;
+		}
+		.banner:hover .btn{
+			display: block;
+		}
+		.banner .btn_l{
+			left: 0;
+		}
+		
+	    .banner .btn_r{
+	  		right: 0;
+	    }
+	  /*内容左边*/
+	  .ctx_left{
+	  	width: 358px;
+	  	height: 840px;
+	  	float: left;
+	  	background: url('images/banner_company_bg.jpg');
+	  	-webkit-background-size: cover;
+	  	background-size: cover;
+	  }
+	  .searcharea{
+	  	height: 100px;
+	  	background-color: #fff;
+		
+	  }
+	  .searchinfo{
+	  	width: 230px;
+	  	height: 40px;
+	  	margin-top: 33px;
+	  	margin-left: 50px;
+	  	background-color: rgba(102, 153, 255, 0.2);
+	  	border: 1px solid #ccc;
+	  	border-radius: 8px;
+	  	font-size: 20px;
+	  	padding-left: 36px;
+	  }
+	  .searchinfo:focus{
+	  	border-radius: 5px;
+	  }
+	  .searchicon{
+	  	position: relative;
+	  	top: -32px;
+	  	left: 58px;
+	  }
+	  .company-info{
+	  	width: 330px;
+	  	height: 500px;
+	  	margin: 10px auto 0px;
+	  	box-shadow: 0 6px 10px #aaa;
+	  	background-color: #fff;
+	  }
+      .topinfo{
+      	width: 298px;
+      	height: 180px;
+      	border-bottom: 1px solid blue;
+      	margin: 0 auto;
+      	color: #336699;
+      	font-family: Microsoft Yahei;
+      	padding: 15px 5px;
+      	/*line-height: 1.7;*/
+      	letter-spacing: 1.5px;
+      }
+      .topinfo span{
+      	display: block;
+      	margin-top:10px;
+      }
+      .bottominfo{
+      	width: 298px;
+      	font-family: Microsoft Yahei;
+      	padding-top: 5px;
+      }
+      .bottominfo p{
+      	color: rgba(158,158,158,1);
+      	line-height: 1.5;
+      	text-indent: 2em;
+      	margin-left: 15px;
+      }
+      .moreinfo{
+      	margin-top: 17px;
+      }
+	  /*右边内容*/
+	  .ctx_right{
+	  	width: 627px;
+	  	height: 840px;
+
+	  	margin-left: 15px;
+	  	float: left;
+	  }
+	  .news{
+	  	background-color: #fff;
+	  	height: 296px;
+	  	font-family: Microsoft Yahei;
+	  	padding: 24px 24px 0;
+        margin-bottom: 15px;
+	  }
+	  .newstitle{
+
+        font-size: 27px;
+        color: #336699;
+        border-bottom: 1px solid #ccc;
+	  }
+	  .news ul{
+	  	margin-left: 24px;
+	  	margin-top: 15px;
+	  	line-height: 1.6;
+	  	color: #336699;
+	  }
+	  .news ul li{
+	  	width: 100%;
+	  }
+	  .news ul li span{
+	  	display: inline-block;
+	  	text-indent: 9.5em;
+	  	color: #999;
+	  }
+      .news ul li a {
+      	text-decoration: none;
+      }
+      .news ul li a:link,.news ul li a:visited{
+      	color: #999;
+      }
+      .demo{
+      	height: 505px;
+      	background: url('images/banner_home_demo.png');
+      	padding-left: 20px;
+      	
+      }
+      .demo a{
+      	display: block;
+      	width: 73px;
+      	height: 36px;
+      	color: #fff;
+      	background-color: rgba(51, 51, 102, 0.4);
+      	font-size: 28px;
+      	text-decoration: none;
+      	padding-left: 5px;
+      	float: left;
+      	margin-top: 350px;
+      }
+      /*底层部分*/
+	  .companyimage{
+
+	  	width: 100%;
+	  	height: 694px;
+	  	clear: both;
+	  	/*background-color: orange;*/
+	  	/*margin-top: 20px;*/
+	  	padding-top: 20px;
+	  }
+	  .companyimage img{
+	  	width: 100%;
+	  	height: 100%;
+	  }
+	  /*页脚样式*/
+	  .footer{
+	  	width: 100%;
+	  	height: 240px;
+	  	background: url('images/footerbg.png');
+	  }

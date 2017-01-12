@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>weatherApp</title>
+	<script src="jquery-1.8.3.min.js"></script>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		height: 100%;
+		font-family: Microsoft Yahei;
+		background-repeat: no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+		background-attachment: fixed;
+	}
+	.main{
+	width: 400px;
+    height: 400px;
+    margin: 50px auto;
+    background-color: hsla(0, 0%, 0%, 0.44);
+    font-size: 20px;
+    color: #fff;
+    border-radius: 10px;
+	}
+	.item{
+		display: block;
+		margin-top: 20px;
+	}
+</style>
+<body>
+	<div class="main">
+		<h1 class="localCity">Beijing</h1>
+		<p>
+			<span class="item temp"></span>
+			<span class="item weatherDescription"></span>
+			<span class="item temperature"></span>
+			<span class="item wind"></span>
+			<span class="item dressing_index"></span>
+			<span class="item dressing_advice"></span>
+		</p>
+	</div>
+</body>
+<script>
+	$(function() {
+		
+		getLocation();
+
+		function getLocation () {
+			
+		   $.getJSON('http://ipinfo.io', function(data){
+  					console.log(data);
+  					$('.localCity').html(data.city+","+data.country);
+  					var locArr = data.loc.split(",");
+  				    var longtitude = Number(Number(locArr[1]).toFixed(2));//经度
+  				    var latitude = Number(Number(locArr[0]).toFixed(2));//纬度
+  				    getLocalWeather(latitude,longtitude);
+  				    loadBackground(latitude,longtitude);
+			});
+
+		}
+		function getLocalWeather (lat,lon) {
+			
+			var key = "22131e4c544db5263b6c68bc37b21b92";
+			// var url = "http://v.juhe.cn/weather/geo?format=2&key=22131e4c544db5263b6c68bc37b21b92&lon=%lon%&lat=%lat%";
+			// var urlLat = url.replace("%lat%",lat);
+			// var urlLongLat = urlLat.replace("%lon%",lon);
+
+            $.getJSON('http://v.juhe.cn/weather/geo?callback=?',
+            		 {"lon": lon,
+            		  "lat": lat,
+            		  "dtype": "jsonp",
+            		  "key": key
+            		 }, 
+            		 function(data) {
+            		console.log(data);
+            		
+            		var sk = data.result.sk;
+            		var today = data.result.today;
+            		$('.temp').html(sk.temp+'℃');
+            		$('.weatherDescription').html(today.weather);
+            		$('.temperature').html(today.temperature);
+            		$('.wind').html(today.wind);
+            		$('.dressing_index').html(today.dressing_index);
+            		$('.dressing_advice').html(today.dressing_advice);
+            		
+            });
+		}
+		//使用jsonp，但是使用的是format=json的格式，flicker官方文档中接口指定了回调名，所以url参数后边不需要写明callback
+		function loadBackground(lat,lon) {
+			// console.log(weatherTag);
+			// var script = document.createElement("script");
+			// script.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1452866c8cea54acd0075022ef573a07&lat=" + lat + "&lon=" + lon + "&accuracy=1&sort=relevance&extras=url_l&format=json";
+			// document.getElementsByTagName("head")[0].appendChild(script);
+			$.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1452866c8cea54acd0075022ef573a07&lat=" + lat + "&lon=" + lon + "&accuracy=1&sort=relevance&extras=url_l&format=json&jsoncallback=?", 
+            			function(data) {
+            				console.log(data);
+            				/*optional stuff to do after success */
+            				if (data.photos.pages>0) {
+								var photo = data.photos.photo[Math.floor(Math.random()*parseInt(data.photos.photo.length))];
+									document.querySelector("body").style.backgroundImage = "url('" + photo.url_l + "')";
+							} else{
+									document.querySelector("body").style.backgroundImage = "url('https://fourtonfish.com/tutorials/weather-web-app/images/default.jpg')";
+							};
+            		});
+		}
+		// //指定的回调名称
+		// function jsonFlickrApi(data) {
+		// 	console.log(data);
+		// 	if (data.photos.pages>0) {
+		// 		var photo = data.photos.photo[Math.floor(Math.random()*parseInt(data.photos.photo.length))];
+		// 			document.querySelector("body").style.backgroundImage = "url('" + photo.url_l + "')";
+		// 	} else{
+		// 			document.querySelector("body").style.backgroundImage = "url('https://fourtonfish.com/tutorials/weather-web-app/images/default.jpg')";
+		// 	};
+		// }
+		// function jsonFlickrApi (response) {
+		// 		  console.log(
+		// 		     "Got response from Flickr-API with the following photos: %o", 
+		// 		     response.photos
+		// 		  );
+		// 		  // Handle the response here. I.E update the DOM, trigger event handlers etc.
+		// 		}
+	});
+</script>
+</html>

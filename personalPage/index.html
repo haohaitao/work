@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>reddean</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/jquery.fullPage.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
+   
+    <style>
+    	 ul{list-style-type: none;padding: 0;margin: 0}
+    	 a{text-decoration: none;}
+		.header{width: 100%;height: 70px;background-color: #fff;position: fixed;z-index: 1000;top: 0;left: 0}
+		.header .inner{width: 980px;height: 70px;margin: 0 auto;}
+		.header .logo{height: 100%;width: 120px;background: url(images/logo.jpg);-webkit-background-size: cover;
+		background-size: cover; background-repeat: no-repeat; background-position: center 40%;float: left;margin-right: 340px;}
+		
+		.header .nav li{float: left;}
+		.header .nav li a{line-height: 70px;padding: 0 20px;color: rgba(0,188,212,0.85);display: block;font-size: 22px;}
+		.header .nav li a:hover,.header .nav li.active a{
+			color: #fff;
+			background-color: rgba(0,188,212,0.85);
+			border-bottom: 1px solid #fff;
+		}
+
+		.section{overflow: hidden;}
+		.s1{
+			background: url(images/bg_3.jpg) ;
+			-webkit-background-size: cover;
+			background-size: cover; 
+			background-repeat: no-repeat;}
+		.s1 div.timelinebox{    
+			position: absolute;
+            left: 50%;
+    		top: 50%;
+    		margin-left: -288px;
+    		margin-top: -240px;
+    		opacity: 0;
+    		transition:0.7s ease-in-out 0.8s;
+    	}
+    	.s1.active div.timelinebox{
+    		opacity: 1
+    	}
+
+		.s2{background: url(images/bg4.jpg) ;-webkit-background-size: cover;
+		background-size: cover; background-repeat: no-repeat;}
+
+
+
+		.s3{background: url(images/bg6.jpg) ;-webkit-background-size: cover;
+		background-size: cover; background-repeat: no-repeat;}
+		.s3 .coverbox{
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.6);
+		}
+		.s3 .coverbox .hobbybox{
+			width: 320px;
+			height: 420px;
+			background-color: #FFF;
+			float: left;
+			margin-left: 100px;
+			margin-top: 150px;
+			border-radius: 10px;
+			
+			text-align: center;
+			transition:0.7s 0.8s;
+		}
+		.s3 .coverbox div:nth-child(1){transform:translateX(0);}
+		.s3 .coverbox div:nth-child(2){transform:translateX(-420px);}
+		.s3 .coverbox div:nth-child(3){transform:translateX(-840px);}
+		.s3.active .coverbox div{transform: translateX(0);}
+		.s3 .coverbox .hobbybox a {
+			color: #000;
+			-webkit-filter: grayscale(1) blur(1px);
+			display: inline-block;
+			transition:-webkit-filter 0.5s ease-in-out;
+		}
+		.s3 .coverbox .hobbybox a:hover{
+			-webkit-filter: grayscale(0) blur(0);
+		}
+		.s3 .coverbox .hobbybox a .imgbox{
+			margin: 10px auto;
+			background-color: #ccc;
+			width: 300px;
+			height: 380px;
+		}
+		.s3 .coverbox  div:nth-child(1) a .imgbox{background: url(images/mma.jpg);-webkit-background-size: cover;
+			background-size: cover; 
+			background-repeat: no-repeat;}
+		.s3 .coverbox  div:nth-child(2) a .imgbox{background: url(images/movie.jpg);-webkit-background-size: cover;
+			background-size: cover; 
+			background-repeat: no-repeat;}
+		.s3 .coverbox  div:nth-child(3) a .imgbox{background: url(images/food.jpg);-webkit-background-size: cover;
+			background-size: cover; 
+			background-repeat: no-repeat;}
+
+
+		.s4{background: url(images/bg5.jpg) ;-webkit-background-size: cover;
+		background-size: cover; background-repeat: no-repeat;}
+		.s4 .coverbox{
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.6);
+		}
+		.s4 .coverbox .wrap{
+			position: absolute;
+			left: 20%;
+			top: 50%;
+		}
+		.s4 .coverbox .wrap li{
+			float: left;
+			margin-right: 100px;
+			text- align: center;
+		}
+		.s4 .coverbox .wrap li a {
+			line-height: 70px;
+			color: #000;
+			display: block;
+			width: 150px;
+			height: 70px;
+			background-color: #E4E4E4;
+			border-radius: 4px;
+			font-size: 20px;
+
+			transition:0.5s ease-in-out;
+		}
+		.s4 .coverbox .wrap li a span{
+			float: right;
+			margin-right: 30px;
+		}
+		.s4 .coverbox .wrap li a i{
+			display: inline-block;
+			width: 48px;
+			height: 48px;
+			margin-top: 10px;
+			margin-left: 7px;
+		}
+		.s4 .coverbox .wrap  li:nth-child(1) a i{
+			background: url(images/qq_w.png);
+		}
+		.s4 .coverbox .wrap  li:nth-child(2) a i{
+			background: url(images/github_w.png);	
+		}
+		.s4 .coverbox .wrap  li:nth-child(3) a i{
+			background: url(images/zhihu_w.png);	
+		}
+		.s4 .coverbox .wrap  li:nth-child(4) a i{
+			background: url(images/weibo_w.png);	
+		}
+
+		/*hover*/
+		.s4 .coverbox .wrap li a:hover{
+			line-height: 80px;
+			color: #fff;
+			display: block;
+			width: 160px;
+			height: 80px;
+			background-color: #7D7D7D;
+			border-radius: 4px;
+			font-size: 23px;
+		}
+		
+		.s4 .coverbox .wrap li:nth-child(1) a:hover i{
+			background: url(images/qq_b.png);
+		}
+		.s4 .coverbox .wrap li:nth-child(2) a:hover i{
+			background: url(images/github_b.png);
+		}
+		.s4 .coverbox .wrap li:nth-child(3) a:hover i{
+			background: url(images/zhihu_b.png);
+		}
+		.s4 .coverbox .wrap li:nth-child(4) a:hover i{
+			background: url(images/weibo_b.png);
+		}
+		/*兼容火狐要去掉前缀*/
+		@-webkit-keyframes move1{
+			0%{transform:translate(400px,-1000px);}
+			30%{transform:translate(400px,0px);}
+			50%{transform:translate(400px,-50px);}
+			70%{transform:translate(400px,0px);}
+			100%{transform:translate(0px,0px);}
+		}
+		@-webkit-keyframes move2{
+			0%{transform:translate(150px,-1000px);}
+			30%{transform:translate(150px,0px);}
+			50%{transform:translate(150px,-50px);}
+			70%{transform:translate(150px,0px);}
+			100%{transform:translate(0px,0px);}
+		}
+		@-webkit-keyframes move3{
+			0%{transform:translate(-100px,-1000px);}
+			30%{transform:translate(-100px,0px);}
+			50%{transform:translate(-100px,-50px);}
+			70%{transform:translate(-100px,0px);}
+			100%{transform:translate(0px,0px);}
+		}
+		@-webkit-keyframes move4{
+			0%{transform:translate(-350px,-1000px);}
+			30%{transform:translate(-350px,0px);}
+			50%{transform:translate(-350px,-50px);}
+			70%{transform:translate(-350px,0px);}
+			100%{transform:translate(0px,0px);}
+		}
+		.s4 .coverbox .wrap li:nth-child(1){
+			transform:translate(400px,-1000px);
+		}
+		.s4.active .coverbox .wrap li:nth-child(1){
+			-webkit-animation:move1 3s 0.8s forwards;
+		}
+		.s4 .coverbox .wrap li:nth-child(2){
+			transform:translate(150px,-1000px);
+		}
+		.s4.active .coverbox .wrap li:nth-child(2){
+			-webkit-animation:move2 3s 0.8s forwards;
+		}
+		.s4 .coverbox .wrap li:nth-child(3){
+			transform:translate(-100px,-1000px);
+		}
+		.s4.active .coverbox .wrap li:nth-child(3){
+			-webkit-animation:move3 3s 0.8s forwards;
+		}
+		.s4 .coverbox .wrap li:nth-child(4){
+			transform:translate(-350px,-1000px);
+		}
+		.s4.active .coverbox .wrap li:nth-child(4){
+			-webkit-animation:move4 3s 0.8s forwards;
+		}
+    </style>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="header">
+
+		<div class="inner">
+			<div class="logo">
+				
+			</div>
+			<ul class="nav">
+				<li data-menuanchor="page1" class="active"><a href="#page1">个人经历</a></li>
+				<li data-menuanchor="page2"><a href="#page2">项目介绍</a></li>
+				<li data-menuanchor="page3"><a href="#page3">个人爱好</a></li>
+				<li data-menuanchor="page4"><a href="#page4">联系方式</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	<!-- 主体 -->
+	<div class="main">
+		<!-- 第一屏section1 -->
+		<div class="section s1">
+			<div class="timelinebox">
+				<ul class="timeline">
+
+					<!-- Item 1 -->
+					<li>
+						<div class="direction-r">
+							<div class="flag-wrapper">
+								<span class="flag">南昌大学</span>
+								<span class="time-wrapper"><span class="time">2013 - present</span></span>
+							</div>
+							<div class="desc">学习计算机基础课程，在大三对前端感兴趣，并开始自学前端课程</div>
+						</div>
+					</li>
+				  
+					<!-- Item 2 -->
+					<li>
+						<div class="direction-l">
+							<div class="flag-wrapper">
+								<span class="flag">武汉软酷</span>
+								<span class="time-wrapper"><span class="time">2016.6 - 2016.8</span></span>
+							</div>
+							<div class="desc">校内项目实训，完成了一个发油销售网站前后台页面的制作</div>
+						</div>
+					</li>
+
+					<!-- Item 3 -->
+					<li>
+						<div class="direction-r">
+							<div class="flag-wrapper">
+								<span class="flag">工作圈研发部</span>
+								<span class="time-wrapper"><span class="time">2016.8 - 2016.11</span></span>
+							</div>
+							<div class="desc">第一份实习工作，见识到了实际工作中的开发</div>
+						</div>
+					</li>
+				  
+				</ul>
+
+			</div>
+		</div>
+		<!-- 第二屏section2 -->
+		<div class="section s2"></div>
+		<!-- 第三屏 -->
+		<div class="section s3">
+			<div class="coverbox">
+					<div class="hobbybox"><a href="#"><div class="imgbox"></div><p>MMA</p></a></div>
+					<div class="hobbybox"><a href="#"><div class="imgbox"></div><p>电影</p></a></div>
+					<div class="hobbybox"><a href="#"><div class="imgbox"></div><p>美食</p></a></div>
+			</div>
+		</div>
+		<div class="section s4">
+			<div class="coverbox">
+				<div class="wrap">
+					<ul>
+						<li><a href="http://user.qzone.qq.com/1335056213/main"><i></i><span>QQ</span></a></li>
+						<li><a href="https://github.com/RedDean"><i></i><span>github</span></a></li>
+						<li><a href="https://www.zhihu.com/people/ding-jian-hong-26/activities"><i></i><span>知 乎</span></a></li>
+						<li><a href="http://weibo.com/5330317208/profile?topnav=1&wvr=6&is_all=1"><i></i><span>微 博</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	$(function() {
+		$('.main').fullpage({
+			'navigation': true,
+			anchors: ['page1', 'page2', 'page3', 'page4'],
+		    menu: '.nav',
+		    verticalCentered:false
+		});
+		// 响应式处理
+		 $(window).resize(function(){
+        	autoScrolling();
+	    });
+
+	    function autoScrolling(){
+	        var $ww = $(window).width();
+	        if($ww < 1024){
+	            $.fn.fullpage.setAutoScrolling(false);
+	        } else {
+	            $.fn.fullpage.setAutoScrolling(true);
+	        }
+	    }
+
+	    autoScrolling();
+
+	});
+</script>
+</html>
